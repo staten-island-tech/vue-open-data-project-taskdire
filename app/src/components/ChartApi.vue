@@ -15,7 +15,7 @@ async function getdata() {
         } else {
             const data = await response.json();
             const apidata = data.data;
-            console.log(data.data);
+            console.log(apidata);
         }
     } catch (error) {
         console.log(error);
