@@ -1,29 +1,30 @@
 <template>
     <div>
+        <div v-for="(car, index) in cars" :key="index" :car="car" :id="index + 1">{{ car.vehicle_type_code1 }}</div>
 
     </div>
 </template>
 
 <script setup>
-const url = "https://data.cityofnewyork.us/resource/h9gi-nx95.json";
+import { ref, onMounted } from `vue`
 
-async function getdata() {
+const cars = ref([])
+
+async function getcar() {
     try {
-        const response = await fetch(url);
-        if (response.status != 200) {
-            throw new Error(response);
-        } else {
-            const data = await response.json();
-            const apidata = data.data;
-            console.log(apidata);
-        }
+        const response = await fetch("https://data.cityofnewyork.us/resource/h9gi-nx95.json")
+        let data = await response.json()
+        cars.value = data
+        console.log(data)
     } catch (error) {
-        console.log(error);
-        alert("Sorry, could not find this.");
+        console.error('error fetching data:', error)
     }
 }
+onMounted(() => {
+    getcar()
+})
 
-getdata();
+
 </script>
 
 <style lang="scss" scoped></style>
