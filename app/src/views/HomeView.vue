@@ -9,7 +9,10 @@
 </template>
 
 <script setup>
+import { onMounted, ref } from 'vue';
 const url = "https://data.cityofnewyork.us/resource/h9gi-nx95.json";
+
+const cars = ref([]);
 
 async function getdata() {
   try {
@@ -18,8 +21,8 @@ async function getdata() {
       throw new Error(response);
     } else {
       const data = await response.json();
-      const apidata = data.data;
-      console.log(apidata);
+      cars.value = data;
+      console.log(cars.value);
     }
   } catch (error) {
     console.log(error);
@@ -28,6 +31,10 @@ async function getdata() {
 }
 
 getdata();
+
+onMounted(() => {
+  getdata()
+})
 </script>
 
 <style lang="scss" scoped></style>
