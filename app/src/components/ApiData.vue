@@ -1,28 +1,28 @@
 <template>
-    <div>
-        <div v-for="(info, index) in Array" :key="index" :info="info" :id="index + 1">
+    <container>
+        <CardProps v-for="(info, index) in Array" :key="index" :info="info" :id="index + 1">
             {{ info.vehicle_type_code1 }}
 
-        </div>
+        </CardProps>
 
-    </div>
+    </container>
 </template>
 
 <script setup>
+import CardProps from './CardProps.vue';
 import { onMounted, ref } from 'vue';
-const url = "https://data.cityofnewyork.us/resource/h9gi-nx95.json";
 
 const Array = ref([]);
 
 async function getdata() {
     try {
-        const response = await fetch(url);
+        const response = await fetch("https://data.cityofnewyork.us/resource/h9gi-nx95.json?");
         if (response.status != 200) {
             throw new Error(response);
         } else {
             const data = await response.json();
-            info.value = data;
-            console.log(info.value);
+            Array.value = data;
+            console.log(Array.value);
         }
     } catch (error) {
         console.log(error);
