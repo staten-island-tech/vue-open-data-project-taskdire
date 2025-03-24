@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-wrap justif-around flex-row">
-        <ApiData />
+        <ApiData/>
     </div>
 </template>
 
@@ -9,3 +9,4 @@
 </script>
 
 <style scoped></style>
+//tydfyguhijk
