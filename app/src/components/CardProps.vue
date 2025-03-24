@@ -6,7 +6,7 @@
 
 <script setup>
 defineProps({
-    info: object;
+    info: object,
 })
 </script>
 
