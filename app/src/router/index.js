@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import CardsData from '@/views/CardsData.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -10,9 +9,14 @@ const router = createRouter({
       component: () => import('../views/HomeView.vue'),
     },
     {
-      path: '/about',
-      name: 'about',
-      component: () => import('../views/AboutView.vue'),
+      path: '/Borough',
+      name: 'Borough',
+      component: () => import('../views/BoroughChart.vue'),
+    },
+    {
+      path: '/Mofi',
+      name: 'Mofi',
+      component: () => import('../views/MofiChart.vue'),
     },
   ],
 })
